@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/form-style.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg">
+                    <div class="card-header bg-primary text-white text-center">
+                        <h2>Update Blog Post</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/updateBlogs/<%=editBlog._id %>" enctype="multipart/form-data" >
+                            <!-- Blog Title -->
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Blog Title</label>
+                                <input type="text" name="title" value="<%= editBlog.title %>" class="form-control"
+                                    id="title" placeholder="Enter your blog title" >
+                            </div>
+
+                            <!-- Blog Content -->
+                            <!-- Blog Content -->
+                            <div class="mb-3">
+                                <label for="content" class="form-label">Blog Content</label>
+                                <textarea class="form-control" name="content" id="content" rows="6"
+                                    placeholder="Write your blog content here..."
+                                    ><%= editBlog.content %></textarea>
+                            </div>
+
+
+                            <!-- Image Upload -->
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Upload Blog Image</label>
+                                <input type="file" name="updateimg" class="form-control" id="image">
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Update Blog</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Panel</title>
+
+    <!--Bootstrap Icon Link-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="bg-dark text-white p-3 text-center d-flex justify-content-between">
+        <h1>Blog Post Panel</h1>
+        <p>Manage your blogs with ease</p>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <a href="/addForm" class="btn btn-success">Create New Blog</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 bg-primary sidebar py-5">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link text-white active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/myBlogs">My Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/allblog">All Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 col-lg-10 p-4">
+                <div>
+                    <h2 class="bg-success">
+                        all Posts
+                    </h2>
+                    <div class="allBlogs">
+                        <div class="row">
+                            <% allBlogs.forEach(blog => { %> 
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 shadow-lg">
+                                        <img src="<%= blog.path %>" class="card-img-top" alt="<%= blog.path %>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= blog.title %></h5>
+                                            <p class="card-text">
+                                                <%= blog.content.substring(0, 100) %>... 
+                                            </p>
+                                            <a href="#" class="btn btn-primary">Read More</a>
+                                        </div>
+                                        <div class="card-footer text-muted">
+                                            Posted by 
+                                            <% let blogger = bloggers.find(b => b.email === blog.userEmail); %>
+                                            <%= blogger ? blogger.name : 'Unknown' %>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
